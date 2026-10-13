@@ -1,0 +1,267 @@
+@import "tailwindcss";
+
+/* ── Tell Tailwind v4 to use class-based dark mode (not prefers-color-scheme) ── */
+@variant dark (&:is(.dark *));
+
+/* ── Seller Module CSS Variables ── */
+/* These are referenced by Seller component .css files (Sidebar, Dashboard, etc.) */
+:root {
+  --white: #ffffff;
+  --primary: #13ec6d;
+  --primary-dark: #0eb553;
+  --primary-light: rgba(19, 236, 109, 0.15);
+  --bg-light: #f6f8f7;
+
+  /* Slate palette */
+  --slate-50: #f8fafc;
+  --slate-100: #f1f5f9;
+  --slate-200: #e2e8f0;
+  --slate-300: #cbd5e1;
+  --slate-400: #94a3b8;
+  --slate-500: #64748b;
+  --slate-600: #475569;
+  --slate-700: #334155;
+  --slate-800: #1e293b;
+  --slate-900: #0f172a;
+
+  /* Accent colors */
+  --red-500: #ef4444;
+  --orange-500: #f97316;
+  --amber-500: #f59e0b;
+  --amber-700: #b45309;
+  --blue-500: #3b82f6;
+  --emerald-600: #059669;
+
+  /* Border radius */
+  --radius-sm: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1.25rem;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --shadow-xl:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+
+.dark {
+  --white: #102218; /* dark mode card background */
+  --bg-light: #0c1510; /* dark mode main background */
+
+  /* Invert slate palette */
+  --slate-50: #0f172a;
+  --slate-100: #1e293b;
+  --slate-200: #334155;
+  --slate-300: #475569;
+  --slate-400: #64748b;
+  --slate-500: #94a3b8;
+  --slate-600: #cbd5e1;
+  --slate-700: #e2e8f0;
+  --slate-800: #f1f5f9;
+  --slate-900: #f8fafc;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --shadow-md:
+    0 4px 6px -1px rgba(0, 0, 0, 0.6), 0 2px 4px -2px rgba(0, 0, 0, 0.6);
+  --shadow-xl:
+    0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+}
+
+@theme {
+  --color-primary: #13ec6d;
+  --color-primary-d: #0fc85d;
+  --color-bg-light: #f6f8f7;
+  --color-bg-dark: #102218;
+
+  --color-n900: #0c1510;
+  --color-n800: #1a2b21;
+  --color-n700: #2d4235;
+  --color-n600: #4a6354;
+  --color-n500: #718b7c;
+  --color-n400: #9db0a5;
+  --color-n300: #c7d1cc;
+  --color-n200: #e3e8e5;
+  --color-n100: #f0f4f2;
+
+  --font-family-display: "Manrope", sans-serif;
+
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1.25rem;
+}
+
+/* ── Base ── */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family-display);
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ── Scrollbar ── */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ── Animations ── */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(19, 236, 109, 0.45);
+  }
+  70% {
+    box-shadow: 0 0 0 12px rgba(19, 236, 109, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(19, 236, 109, 0);
+  }
+}
+@keyframes notifSlide {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  10% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  85% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.4s ease-out forwards;
+}
+.animate-fade-in {
+  animation: fadeIn 0.2s ease;
+}
+.animate-pulse-ring {
+  animation: pulse-ring 2s infinite;
+}
+.animate-notif {
+  animation: notifSlide 2.5s ease forwards;
+}
+
+/* ── Auth page animations ── */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+@keyframes shimmer {
+  100% {
+    transform: translateX(200%);
+  }
+}
+@keyframes pulseGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(19, 236, 109, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px 4px rgba(19, 236, 109, 0.15);
+  }
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+.animate-shimmer {
+  animation: shimmer 1.5s ease-in-out;
+}
+.animate-pulse-glow {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+.animate-fade-in-up {
+  animation: fadeInUp 0.4s ease-out forwards;
+}
+.animate-scale-in {
+  animation: scaleIn 0.3s ease-out forwards;
+}
+
+/* ── carbonX styled X ── */
+.Xchange {
+  color: #13ec6d !important;
+  font-weight: 900 !important;
+  font-style: italic;
+  display: inline-block;
+  transform: scale(1.1);
+}
+
+/* ── Cart badge absolute position ── */
+.cart-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+}
+
+/* ── Material Symbols fill variant (used by Seller Sidebar icons) ── */
+.material-symbols-outlined.filled {
+  font-variation-settings: "FILL" 1;
+}
+
+
+/* hide scrollbar but keep scroll working */
+.scroll-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-hidden {
+  -ms-overflow-style: none;   /* IE */
+  scrollbar-width: none;       /* Firefox */
+}

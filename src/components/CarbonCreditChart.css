@@ -1,0 +1,266 @@
+/* ===== Carbon Credit Price Chart ===== */
+.cc-chart-card {
+  background: var(--white);
+  border-radius: var(--radius-2xl);
+  border: 1px solid var(--slate-100);
+  padding: 1.5rem;
+  color: var(--slate-900);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: background 0.3s, border-color 0.3s, box-shadow 0.3s, color 0.3s;
+}
+.cc-chart-card:hover {
+  box-shadow: var(--shadow-md);
+}
+.dark .cc-chart-card {
+  border-color: var(--slate-200);
+}
+
+/* Header */
+.cc-chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.25rem;
+  position: relative;
+  z-index: 2;
+}
+
+.cc-chart-title {
+  font-size: 1.125rem;
+  font-weight: 900;
+  color: var(--slate-900);
+  margin: 0 0 0.25rem;
+  letter-spacing: -0.01em;
+  transition: color 0.3s;
+}
+
+.cc-chart-subtitle {
+  font-size: 0.75rem;
+  color: var(--slate-500);
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.cc-chart-subtitle sub {
+  font-size: 0.625rem;
+}
+
+/* Range Toggle Buttons */
+.cc-range-toggles {
+  display: flex;
+  gap: 0.25rem;
+  padding: 0.2rem;
+  background: var(--slate-50);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--slate-100);
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.cc-range-btn {
+  padding: 0.375rem 0.75rem;
+  border: none;
+  background: transparent;
+  color: var(--slate-400);
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  letter-spacing: 0.02em;
+}
+.cc-range-btn:hover {
+  color: var(--slate-600);
+  background: var(--slate-100);
+}
+.cc-range-btn.active {
+  background: #6366f1;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+}
+
+/* Chart SVG Container */
+.cc-chart-svg-wrap {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 1.25rem;
+}
+
+.cc-chart-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+/* Y-axis labels */
+.cc-y-label {
+  font-size: 10px;
+  fill: var(--slate-400);
+  font-weight: 600;
+  font-family: inherit;
+}
+
+/* X-axis labels */
+.cc-x-label {
+  font-size: 10px;
+  fill: var(--slate-400);
+  font-weight: 600;
+  font-family: inherit;
+}
+
+/* Grid lines */
+.cc-grid-line {
+  stroke: var(--slate-100);
+  stroke-width: 1;
+  transition: stroke 0.3s;
+}
+
+/* Chart line */
+.cc-chart-line {
+  fill: none;
+  stroke: #6366f1;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Area gradient fill */
+.cc-chart-area {
+  opacity: 0.9;
+}
+
+/* Current price dot */
+.cc-price-dot-outer {
+  fill: rgba(99, 102, 241, 0.2);
+  animation: priceDotPulse 2s ease-in-out infinite;
+}
+.cc-price-dot-inner {
+  fill: #6366f1;
+  filter: drop-shadow(0 0 4px rgba(99, 102, 241, 0.5));
+}
+
+@keyframes priceDotPulse {
+  0%, 100% { r: 8; opacity: 0.25; }
+  50% { r: 12; opacity: 0.1; }
+}
+
+/* Hover hitbox circles */
+.cc-hover-dot {
+  fill: transparent;
+  cursor: pointer;
+  transition: fill 0.15s;
+}
+.cc-hover-dot:hover {
+  fill: rgba(99, 102, 241, 0.15);
+}
+
+/* Tooltip */
+.cc-tooltip {
+  pointer-events: none;
+  transition: opacity 0.15s;
+}
+.cc-tooltip-bg {
+  fill: var(--slate-900);
+  rx: 8;
+  ry: 8;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
+}
+.dark .cc-tooltip-bg {
+  fill: #1a2b21;
+}
+.cc-tooltip-price {
+  fill: #ffffff;
+  font-size: 12px;
+  font-weight: 800;
+  font-family: inherit;
+}
+.cc-tooltip-date {
+  fill: rgba(255, 255, 255, 0.6);
+  font-size: 9px;
+  font-weight: 600;
+  font-family: inherit;
+}
+.cc-tooltip-line {
+  stroke: #6366f1;
+  stroke-width: 1;
+  stroke-dasharray: 4 3;
+  opacity: 0.5;
+}
+.cc-tooltip-dot {
+  fill: #6366f1;
+  stroke: #ffffff;
+  stroke-width: 2;
+  filter: drop-shadow(0 1px 3px rgba(99, 102, 241, 0.4));
+}
+
+/* Bottom Stats Bar */
+.cc-stats-bar {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  padding-top: 1rem;
+  border-top: 1px solid var(--slate-100);
+  position: relative;
+  z-index: 2;
+  transition: border-color 0.3s;
+}
+
+.cc-stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.cc-stat-label {
+  font-size: 0.6875rem;
+  color: var(--slate-400);
+  font-weight: 600;
+  white-space: nowrap;
+  transition: color 0.3s;
+}
+
+.cc-stat-value {
+  font-size: 1.125rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+.cc-stat-value.current {
+  color: #6366f1;
+}
+.cc-stat-value.high {
+  color: var(--slate-900);
+  transition: color 0.3s;
+}
+.cc-stat-value.low {
+  color: var(--slate-900);
+  transition: color 0.3s;
+}
+.cc-stat-value.volume {
+  color: var(--slate-900);
+  transition: color 0.3s;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .cc-chart-card {
+    padding: 1rem;
+  }
+  .cc-chart-header {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .cc-stats-bar {
+    gap: 1rem;
+  }
+  .cc-stat-value {
+    font-size: 0.9375rem;
+  }
+  .cc-range-btn {
+    padding: 0.3rem 0.5rem;
+    font-size: 0.6875rem;
+  }
+}
