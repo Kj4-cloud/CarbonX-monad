@@ -10,8 +10,11 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
-*.local
+# Environments and sensitive credentials
 .env
+.env.local
+.env.*.local
+*.local
 
 .agent/mcp_config.json
 
