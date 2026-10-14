@@ -6,6 +6,7 @@
 [![Build: Vite](https://img.shields.io/badge/Bundler-Vite_7-646CFF.svg)](https://vitejs.dev/)
 [![Database: Supabase](https://img.shields.io/badge/Database-Supabase-3ECF8E.svg)](https://supabase.com/)
 [![Contracts: OpenZeppelin ERC--1155](https://img.shields.io/badge/Contracts-OpenZeppelin_ERC--1155-orange.svg)](https://www.openzeppelin.com/contracts)
+[![Built with: Claude Code](https://img.shields.io/badge/Built%20with-Claude%20Code-D97706.svg?logo=anthropic)](https://claude.ai/code)
 
 **CarbonX** is a decentralized, transparent, and high-performance carbon credit verification and marketplace platform built on the **Monad Testnet**. It bridges the gap between regenerative agricultural land stewards (Farmers / Sellers) and environmentally conscious organizations and consumers (Buyers), providing tamper-proof issuance, MRV (Measurement, Reporting, and Verification), and permanent retirement of tokenized carbon offsets.
 
@@ -26,7 +27,7 @@
   - [5. Deploy Smart Contracts on Monad Testnet](#5-deploy-smart-contracts-on-monad-testnet)
   - [6. Start the Local Development Server](#6-start-the-local-development-server)
   - [7. Production Build & Preview](#7-production-build--preview)
-- [External Code & Library Attribution](#-external-code--library-attribution)
+- [External Code, Tools & AI Attribution](#-external-code-tools--ai-attribution)
 - [License](#-license)
 
 ---
@@ -245,12 +246,13 @@ npm run preview
 
 ---
 
-## 📚 External Code & Library Attribution
+## 📚 External Code, Tools & AI Attribution
 
-CarbonX proudly incorporates and builds upon high quality open-source software and services. We gratefully acknowledge the authors and maintainers of the following technologies:
+CarbonX proudly incorporates and builds upon high quality open-source software, developer tools, and AI technologies. We gratefully acknowledge the authors and maintainers of the following technologies:
 
 | Library / Tool | Author / Maintainer | License | Usage in CarbonX |
 | :--- | :--- | :--- | :--- |
+| **[Claude Code](https://claude.ai/code)** | Anthropic | AI Assistant | AI-assisted architecture, smart contract design, frontend development, and codebase optimization |
 | **[React](https://react.dev/)** | Meta Open Source | [MIT](https://github.com/facebook/react/blob/main/LICENSE) | Reactive user interface and component architecture |
 | **[Vite](https://vitejs.dev/)** | Evan You & Vite Team | [MIT](https://github.com/vitejs/vite/blob/main/LICENSE) | Fast ESM build tooling and local development server |
 | **[React Router](https://reactrouter.com/)** | Remix Software / Shopify | [MIT](https://github.com/remix-run/react-router/blob/main/LICENSE.md) | Client-side routing, navigation, and layout guards |
@@ -265,6 +267,13 @@ CarbonX proudly incorporates and builds upon high quality open-source software a
 | **[jsPDF](https://parall.ax/products/jspdf)** | Parallax & Contributors | [MIT](https://github.com/parallax/jsPDF/blob/master/LICENSE) | Client-side generation of Offset Certificates and Audit Reports |
 | **[jsPDF-AutoTable](https://github.com/simonbengtsson/jsPDF-AutoTable)** | Simon Bengtsson | [MIT](https://github.com/simonbengtsson/jsPDF-AutoTable/blob/master/LICENSE.txt) | Tabular formatting plugin for PDF transaction reports |
 | **[Manrope Font](https://fonts.google.com/specimen/Manrope)** | Mikhail Sharanda | [OFL 1.1](https://scripts.sil.org/OFL) | Modern sans-serif typography |
+
+### 🤖 AI Development & Assistance Notice
+This codebase was developed with the assistance of **Claude Code** (powered by Anthropic's Claude models). Claude Code served as an agentic pair programmer to:
+- Architect and audit the Monad Testnet ERC-1155 smart contract ([`contracts/CarbonXMarketplace.sol`](contracts/CarbonXMarketplace.sol)).
+- Structure non-custodial pull-payment escrow flows and verify reentrancy safety.
+- Implement responsive Web3 frontend features, live block telemetry, and Copernicus satellite NDVI workflows.
+- Generate comprehensive documentation, automated build workflows, and deployment guides.
 
 ---
 
